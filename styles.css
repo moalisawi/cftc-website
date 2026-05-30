@@ -43,10 +43,12 @@ body{
   -webkit-font-smoothing:antialiased;
   line-height:1.6;
   font-size:16px;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit;touch-action:manipulation}
 .num-en, [dir="ltr"]{font-family:"Montserrat","Cairo",sans-serif}
 
 .container{
@@ -81,7 +83,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 /* ============= HEADER ============= */
 .header{
   position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.96);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
   backdrop-filter:saturate(180%) blur(14px);
   border-bottom:1px solid var(--line);
 }
@@ -123,6 +126,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
   font-weight:700;font-size:15px;
   transition:transform .12s, box-shadow .15s, background .15s;
   cursor:pointer;white-space:nowrap;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
 .btn--sm{padding:9px 16px;font-size:14px;border-radius:8px}
 .btn--lg{padding:16px 26px;font-size:16px}
@@ -653,11 +658,12 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 .cform__field input,
 .cform__field select,
 .cform__field textarea{
-  font-family:inherit;font-size:14.5px;
+  font-family:inherit;font-size:16px;
   padding:12px 14px;border-radius:10px;
   border:1.5px solid var(--line);background:var(--bg-soft);
   color:var(--ink);transition:all .15s;
   width:100%;
+  -webkit-appearance:none;
 }
 .cform__field input:focus,
 .cform__field select:focus,
@@ -818,6 +824,24 @@ button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit
 @keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* ============= RESPONSIVE ============= */
+@media (max-width:900px){
+  .svc-tabs{grid-template-columns:repeat(3,1fr)}
+  .client-grid{grid-template-columns:repeat(3,1fr)}
+  .hero__lede{font-size:16px}
+}
+@media (max-width:480px){
+  .topstrip__item:nth-child(2){display:none}
+  .hero__title{font-size:28px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .herocard__footer{flex-direction:column;gap:14px}
+  .herocard__divider{width:48px;height:1px}
+  .testi-grid{gap:16px}
+  .testi-card{padding:22px}
+  .svc-panel{padding:20px}
+  .cform{padding:20px}
+  .cform__hd h3{font-size:19px}
+  .plans{gap:16px}
+}
 @media (max-width:1100px){
   .hero__inner{grid-template-columns:1fr;gap:42px}
   .hero__card{max-width:560px}

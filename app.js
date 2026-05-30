@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   // WA online chip — click opens WhatsApp
   const waOnline=document.getElementById("waOnline");
-  const WA_URL="https://wa.me/972598502221?text=السلام%20عليكم%2C%20أريد%20استشارة%20مجانية%20عن%20شهادة%20ISO";
+  const WA_URL="https://wa.me/972595802221?text=السلام%20عليكم%2C%20أريد%20استشارة%20مجانية%20عن%20شهادة%20ISO";
   waOnline?.addEventListener("click",()=>window.open(WA_URL,"_blank"));
   waOnline?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ") window.open(WA_URL,"_blank");});
 
