@@ -273,8 +273,21 @@ document.addEventListener("DOMContentLoaded",()=>{
   // mobile nav
   const burger = document.getElementById("burger");
   const nav = document.getElementById("nav");
-  burger?.addEventListener("click",()=>nav.classList.toggle("is-open"));
-  nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("is-open")));
+  burger?.addEventListener("click",()=>{
+    const open = nav.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", open);
+  });
+  nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+    nav.classList.remove("is-open");
+    burger.setAttribute("aria-expanded","false");
+  }));
+  // close nav on outside click
+  document.addEventListener("click",e=>{
+    if(nav.classList.contains("is-open") && !nav.contains(e.target) && !burger.contains(e.target)){
+      nav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded","false");
+    }
+  });
 
   // active nav link on scroll
   const sections = ["home","about","services","cases","clients","pricing","contact"];
